@@ -4,9 +4,13 @@ case class Pawn(initialPosition: Coordinate, board: Chequerboard) {
 
   private val movesOder = List(NW, W, SW, S, SE, E, NE, N)
 
-  def tour(): List[Coordinate] = {
-    move(initialPosition)
-    findPath(initialPosition, movesOder, List(initialPosition))
+  def tour(): Either[Exception, List[Coordinate]] = {
+    if (!board.isValidMove(initialPosition))
+      Left(new Exception(s"Initial position $initialPosition is not valid"))
+    else {
+      move(initialPosition)
+      Right(findPath(initialPosition, movesOder, List(initialPosition)))
+    }
   }
 
   def findPath(position: Coordinate,

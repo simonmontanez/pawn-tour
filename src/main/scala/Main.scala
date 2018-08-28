@@ -9,7 +9,7 @@ object Main extends App {
 
   val lastIndex = pawn.tour()
 
-  println(s"lastIndex ${lastIndex.size} ")
-  println(s"tour ${lastIndex.mkString} ")
+  println(s"lastIndex ${lastIndex.right.get.size} ")
+  println(s"tour ${lastIndex.right.get.mkString} ")
 
 }

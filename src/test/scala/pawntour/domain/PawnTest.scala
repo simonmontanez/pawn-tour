@@ -12,10 +12,22 @@ class PawnTest extends WordSpec with Matchers {
       for (r <- 0 to 9) {
         for (c <- 0 to 9) {
           val pawn = Pawn(Coordinate(r, c), board)
-          pawn.tour().size shouldBe 100
+          val tour = pawn.tour()
+          tour shouldBe 'right
+          tour.right.get.size shouldBe 100
+          board.initBoard()
         }
       }
     }
 
+    "validate the initial position" in {
+      board.initBoard()
+      val initialPosition = Coordinate(0, -1)
+      val pawn = Pawn(Coordinate(0, -1), board)
+      val tour = pawn.tour()
+      tour shouldBe 'left
+      tour.left.get.getMessage shouldBe s"Initial position $initialPosition is not valid"
+
+    }
   }
 }
