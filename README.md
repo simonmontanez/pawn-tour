@@ -36,8 +36,6 @@ The project exposes HTTP service using the port 8080
 
 #### Running http locally
 
-#### Running http sub-project locally
-
 ```bash
 sbt
 run
