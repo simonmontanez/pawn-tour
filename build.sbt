@@ -1,4 +1,3 @@
-
 scalaVersion := "2.12.6"
 name := "pawn-tour"
 organization := "truecaller.pawntour"
@@ -9,13 +8,12 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.0.1"
 )
 
-scalacOptions ++= Seq(
-  "-Xfatal-warnings",
-  "-Ywarn-dead-code",
-  "-Ywarn-numeric-widen",
-  "-Ywarn-value-discard",
-  "-Ywarn-unused-import",
-)
+scalacOptions ++= Seq("-Xfatal-warnings",
+                      "-Ywarn-dead-code",
+                      "-Ywarn-numeric-widen",
+                      "-Ywarn-value-discard",
+                      "-Ywarn-unused-import")
+
 coverageMinimum := 90.00
 //coverageFailOnMinimum := true
 
