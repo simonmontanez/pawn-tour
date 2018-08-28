@@ -19,9 +19,9 @@ class ChequerboardTest extends WordSpec with Matchers {
     "init state with all the tiles no visited" in {
       board.initBoard()
 
-      for (r <- 0 to 10) {
-        for (c <- 0 to 10) {
-          val coordinate = Coordinate(0, 6)
+      for (r <- 0 to 9) {
+        for (c <- 0 to 9) {
+          val coordinate = Coordinate(r, c)
           board.getTileByPosition(coordinate) shouldBe Some(
             Tile(coordinate, false))
         }

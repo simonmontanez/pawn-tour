@@ -34,7 +34,7 @@ class Chequerboard {
     def initList(row: Int): List[Tile] = {
       List.tabulate(10)(col => Tile(Coordinate(row, col), false))
     }
-    for (r <- 0 to 10) {
+    for (r <- 0 to 9) {
       tiles(r) = initList(r)
     }
   }
