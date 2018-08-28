@@ -1,6 +1,6 @@
 package pawntour.domain
 
-import org.scalatest.{FlatSpec, Matchers, WordSpec}
+import org.scalatest.{Matchers, WordSpec}
 
 class ChequerboardTest extends WordSpec with Matchers {
   val board = new Chequerboard
