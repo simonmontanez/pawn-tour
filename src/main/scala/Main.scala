@@ -2,7 +2,7 @@ import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.stream.ActorMaterializer
 import com.typesafe.scalalogging.LazyLogging
-import pawntour.http.PawnTourServiceRoutes
+import pawntour.http.{DefaultConfig, PawnTourServiceRoutes}
 
 import scala.concurrent.{Await, ExecutionContext}
 import scala.util.{Failure, Success}
@@ -14,8 +14,10 @@ object Main extends App with PawnTourServiceRoutes with LazyLogging {
   implicit val materializer: ActorMaterializer = ActorMaterializer()
   implicit val ec: ExecutionContext = system.dispatcher
 
-  val bindingFuture
-    : Unit = Http().bindAndHandle(routes, "localhost", 8080) onComplete {
+  val bindingFuture: Unit = Http().bindAndHandle(
+    routes,
+    "localhost",
+    DefaultConfig.httPort) onComplete {
     case Success(Http.ServerBinding(localAddress)) =>
       logger.info(s"Http service started. Listening $localAddress ")
     case Failure(exception) =>
