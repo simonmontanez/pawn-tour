@@ -46,8 +46,8 @@ run
 
 * `GET http://localhost:8080/pawn-tour?raw=0&col=0`<br />
 URL Query parameters.<br />
-`raw`: The raw position.<br />
-`col`: The column position.<br />
+`raw`: Raw position.<br />
+`col`: Column position.<br />
 
 
 The response will return a JSON list with all the Coordinates sorted in order to visit all the tiles.
