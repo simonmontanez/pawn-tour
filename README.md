@@ -36,13 +36,11 @@ The project exposes HTTP service using the port 8080
 
 #### Running http locally
 
-#### Running http sub-project locally
-
 ```bash
 sbt
 run
 ```
-### Getting the Pawn's tour via HTTP endpoint
+#### Getting the Pawn's tour via HTTP endpoint
 
 * `GET http://localhost:8080/pawn-tour?raw=0&col=0`<br />
 URL Query parameters.<br />
@@ -60,7 +58,7 @@ sbt
 test
 ```
 
-Alias command to get tests coverage report
+#### Get tests coverage report
 
 ```bash
 sbt
