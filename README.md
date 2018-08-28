@@ -58,7 +58,7 @@ sbt
 test
 ```
 
-Alias command to get tests coverage report
+#### Get tests coverage report
 
 ```bash
 sbt
