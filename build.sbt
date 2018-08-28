@@ -14,7 +14,8 @@ scalacOptions ++= Seq("-Xfatal-warnings",
                       "-Ywarn-value-discard",
                       "-Ywarn-unused-import")
 
+coverageExcludedFiles := ".*Main.*"
 coverageMinimum := 90.00
-//coverageFailOnMinimum := true
+coverageFailOnMinimum := true
 
 addCommandAlias("review", ";clean;coverage;test:scalafmt;test;coverageReport")
