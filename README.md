@@ -48,7 +48,7 @@ URL Query parameters.<br />
 `col`: Column position.<br />
 
 
-The response will return a JSON list with all the Coordinates sorted in order to visit all the tiles.
+The response will return a JSON list with all the Coordinates sorted in order to visit all the tiles. The timeout to find a path is 1 second.
 
 
 #### Running unit test
