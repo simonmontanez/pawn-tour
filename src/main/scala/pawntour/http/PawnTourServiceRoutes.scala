@@ -16,7 +16,7 @@ trait PawnTourServiceRoutes extends LazyLogging {
 
   def pawnTour: Route =
     path("pawn-tour") {
-      withRequestTimeout(5.seconds) {
+      withRequestTimeout(1.seconds) {
         get {
           parameter("raw".as[Int], "col".as[Int]) { (raw, col) =>
             val initialPosition = Coordinate(raw, col)
