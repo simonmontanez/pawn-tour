@@ -8,6 +8,7 @@ import pawntour.domain.{Chequerboard, Coordinate, Pawn}
 import spray.json.DefaultJsonProtocol._
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport._
 import spray.json.RootJsonFormat
+import scala.concurrent.duration._
 
 trait PawnTourServiceRoutes extends LazyLogging {
 
@@ -15,26 +16,30 @@ trait PawnTourServiceRoutes extends LazyLogging {
 
   def pawnTour: Route =
     path("pawn-tour") {
-      get {
-        parameter("raw".as[Int], "col".as[Int]) { (raw, col) =>
-          val initialPosition = Coordinate(raw, col)
-          logger.debug(
-            s"Getting pawn from the initialPosition $initialPosition")
+      withRequestTimeout(1.seconds) {
+        get {
+          parameter("raw".as[Int], "col".as[Int]) { (raw, col) =>
+            Thread.sleep(5000)
+            val initialPosition = Coordinate(raw, col)
+            logger.debug(
+              s"Getting pawn from the initialPosition $initialPosition")
 
-          val board = new Chequerboard
-          board.initBoard()
+            val board = new Chequerboard
+            board.initBoard()
 
-          val pawn = Pawn(initialPosition, board)
-          pawn
-            .tour()
-            .fold(
-              e => {
-                logger
-                  .error("Error calculating a path from the initialPosition", e)
-                complete(InternalServerError -> e.getMessage)
-              },
-              v => complete(v)
-            )
+            val pawn = Pawn(initialPosition, board)
+            pawn
+              .tour()
+              .fold(
+                e => {
+                  logger
+                    .error("Error calculating a path from the initialPosition",
+                           e)
+                  complete(InternalServerError -> e.getMessage)
+                },
+                v => complete(v)
+              )
+          }
         }
       }
     }
